@@ -1,26 +1,41 @@
-import React from 'react'
-import { BeakerIcon } from '@heroicons/react/24/solid'
-
+import React from 'react';
 export const Navbar:React.FC=()=> {
     return (
-        <div className='w-screen h-[80px] z-10 bg-zinc-100 fixed drop-shadow-lg'>
-            <div className='px-2 flex justify-between items-center w-full h-full'>
-                <div className='flex items-center'>
-                    <h1 className='text-3xl font-bold mr-3 sm:text-4xl'>
-                        Brand
-                    </h1>
-                    <ul className='hidden md:flex'>
-                        <li>
-                            Home
-                        </li>
-                        <li>
-                            about
-                        </li>
-
-                    </ul>
+        <div className='w-screen h-[80px] bg-indigo-700
+z-10  fixed drop-shadow-lg top-0'>
+            <div className='px-2 flex justify-evenly items-center content-center h-full '>
+                <div>
                 </div>
+                <div className='flex items-center  text-center w-full'>
+                    <h1 className='text-3xl font-bold text-white sm:text-4xl mx-auto'>
+                      Panther
+                    </h1>
+                </div>
+                <div>
+              </div>
             </div>
-            <BeakerIcon className='w-5' />
+           <div>
+            <ul aria-labelledby="nav" className='flex flex-row justify-center z-10 bg-white-700 text-black' >
+             <li className=' hover:text-orange-600 hover:underline '>
+                home
+                </li>
+                 <li className=' hover:text-orange-600 hover:underline'>
+                    shop
+                </li>
+                 <li className=' hover:text-orange-600  hover:underline'>
+                    Accessories
+                </li>
+                <li className=' hover:text-orange-600 hover:underline '>
+                    categories
+                </li>
+                 <li className=' hover:text-orange-600 hover:underline'>
+                    Pages
+                </li>
+                <li className=' hover:text-orange-600 hover:underline'>
+                    Contact us
+                </li>
+            </ul>
+           </div>
         </div>
     )
 }

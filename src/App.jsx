@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/Navbar/Navbar'
+
+import Home from './views/Home/Home'
 function App() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <Routes>
+
+      <Route
+        path="/" element={<Home />}
+      />
+    </Routes>
   )
 }
 
