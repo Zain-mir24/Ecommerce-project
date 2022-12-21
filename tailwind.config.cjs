@@ -2,12 +2,9 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    './node_modules/tw-elements/dist/js/**/*.js'
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
-  plugins: [
-    require('tw-elements/dist/plugin')
-  ],
+  plugins: [],
   theme: {
     extend: {
       screens: {

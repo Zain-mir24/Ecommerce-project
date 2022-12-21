@@ -2,7 +2,7 @@ import React from 'react';
 export const Navbar:React.FC=()=> {
     return (
         <div className='w-screen h-[80px] bg-indigo-700
-z-10  fixed drop-shadow-lg top-0'>
+                 z-10  fixed drop-shadow-lg top-0'>
             <div className='px-2 flex justify-evenly items-center content-center h-full '>
                 <div>
                 </div>
@@ -15,7 +15,7 @@ z-10  fixed drop-shadow-lg top-0'>
               </div>
             </div>
            <div>
-            <ul aria-labelledby="nav" className='flex flex-row justify-center z-10 bg-white-700 text-black' >
+            <ul aria-labelledby="nav" className='flex flex-row justify-center z-10 bg-gray-200 text-black' >
              <li className=' hover:text-orange-600 hover:underline '>
                 home
                 </li>
