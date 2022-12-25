@@ -1,6 +1,11 @@
 import React from 'react'
 import { Navbar } from '../../components/Navbar/Navbar'
+import { useNavigate } from "react-router-dom";
 export const Home:React.FC=()=> {
+  const navigate = useNavigate()
+  const handleclick=()=>{
+    navigate("/productdetail")
+  }
   return (
     <div>
       <Navbar />   
@@ -194,7 +199,9 @@ export const Home:React.FC=()=> {
                <p className='text-red-600 text-[8px]'>
                   $18.50
                 </p>
-                <button className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
+                <button
+                 onClick={handleclick}
+                className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
                 Add to cart
               </button>
               </div>
@@ -213,7 +220,9 @@ export const Home:React.FC=()=> {
                   <p className='text-red-600 text-[8px]'>
                     $18.50
                   </p>
-                  <button className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
+                  <button
+                  onClick={handleclick}
+                  className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
                     Add to cart
                   </button>
                 </div>
