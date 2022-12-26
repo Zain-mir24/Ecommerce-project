@@ -1,10 +1,14 @@
 import React from 'react'
 import { Navbar } from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
+import { data } from '../../data';
 export const Home:React.FC=()=> {
   const navigate = useNavigate()
-  const handleclick=()=>{
-    navigate("/productdetail")
+  const handleclick=(i)=>{
+    console.log(i,"data")
+    navigate("/productdetail",{
+      state:i
+    })
   }
   return (
     <div>
@@ -145,92 +149,37 @@ export const Home:React.FC=()=> {
          </div>
          </div>
           {/* Top products */}
-        <div className=' mt-[15rem] h-auto mx-auto  w-9/12' >
-          <h2 className='items-start text-left font-bold m-3'>
-              Top Products
-          </h2>
-
-          <div className='grid grid-cols-4 gap-5'>
-            <div className='bg-slate-100 hover:shadow-lg'>
-                <img 
-                className='h-50 w-full p-4'
-                src={"https://embryo-react.theironnetwork.org/static/media/cat-shoes.d1db9953.jpg"}
-                />
-               <div className='p-2'>
-                <p className='text-[12px] font-bold'>
-                  Men white Air
-                </p>
-                 <p className='text-red-600 text-[8px]'>
-                  $18.50
-                 </p>
-                <button className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
-                Add to cart
-                 </button>
-              </div>
-              </div>
-
-              <div className='bg-slate-100 hover:shadow-lg'>
-                <img 
-                className='h-50 w-full p-4'
-                src={"https://embryo-react.theironnetwork.org/static/media/3-item-a.44bd4841.jpg"}
-                />
-                <div className='p-2'>
-                  <p className='text-[12px] font-bold'>
-                  Men white Air
-                </p>
-                <p className='text-red-600 text-[8px]'>
-                  $18.50
-                </p>
-                <button className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
-                Add to cart
-              </button>
-              </div>
-              </div>
-
-              <div className='bg-slate-100 hover:shadow-lg'>
-                <img 
-                className='h-50 w-full p-4'
-                src={"https://embryo-react.theironnetwork.org/static/media/cat-shoes.d1db9953.jpg"}
-                />
-                <div className='p-2'>
-                    <p className='text-[12px] font-bold'>
-                  Men white Air
-                </p>
-               <p className='text-red-600 text-[8px]'>
-                  $18.50
-                </p>
-                <button
-                 onClick={handleclick}
-                className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
-                Add to cart
-              </button>
-              </div>
-              </div>
-
-            
-              <div className='bg-slate-100 hover:shadow-lg'>
-                <img 
-                className='h-50 w-full p-4'
-                src={"https://embryo-react.theironnetwork.org/static/media/3-item-a.44bd4841.jpg"}
-                />
-                <div className='p-2'>
-                  <p className='text-[12px] font-bold'>
-                    Men white Air
+          <div className=' mt-[15rem] h-auto mx-auto  w-9/12' >
+              <h2 className='items-start text-left font-bold m-3'>
+                  Top Products
+              </h2>
+            <div className='grid grid-cols-4 gap-5'>
+             {data.map((i:any)=>{
+              return(
+                <div className='bg-slate-100 hover:shadow-lg'>
+                  <img 
+                  className='h-50 w-full p-4'
+                  src={i.img}
+                  />
+                  <div className='p-2'>
+                      <p className='text-[12px] font-bold'>
+                    {i.name}
                   </p>
-                  <p className='text-red-600 text-[8px]'>
-                    $18.50
+                <p className='text-red-600 text-[8px]'>
+                  {i.price}
                   </p>
                   <button
-                  onClick={handleclick}
+                  onClick={()=>handleclick(i)}
                   className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
-                    Add to cart
-                  </button>
+                  Add to cart
+                </button>
                 </div>
-              </div>
-             </div>
-          
-            </div>
-   
+                </div>
+                      )
+          })}
+       </div>
+       </div>
+
      </div>
   )
 }

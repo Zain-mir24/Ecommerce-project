@@ -1,6 +1,8 @@
 import React from 'react'
-
+import {useLocation} from "react-router-dom"
 export const Product:React.FC=()=> {
+    const location=useLocation()
+    
   return (
     <div>
            {/*   Details of the product section   */}
@@ -9,37 +11,50 @@ export const Product:React.FC=()=> {
                 Product Details
             </h1>        
         </div>
-        {/* This will have viewable and zoomed pictures */}
+        {/* This will have viewable and zoomed pictures  */}
         <div className='grid grid-cols-3'>
-                <div>
-           <div>
-            12
-           </div>
-           <div> 
-           <img
-            className='h-24'
-            src={"https://embryo-react.theironnetwork.org/static/media/4-item-d.0d054583.jpg"}/>
-           </div>
-           <div >
+         <div>
+            {location.state.sideImages.map((i)=>{
+                return(
+              <div>
             <img 
             className='h-24'
-            src={"https://embryo-react.theironnetwork.org/static/media/4-item-b.738d4594.jpg"}/>
+            src={i}
+            />
            </div>
-
-                </div>
+                )
+            })}
+          
+               </div>
+        {/* Mid div */}
                 <div>
                     <img 
-                    src={"https://embryo-react.theironnetwork.org/static/media/4-item-a.5108aed9.jpg"}
+                    src={location.state.img}
                     />
-
                 </div>
+                {/* Third div */}
                 <div>
                     <a className='text-blue text-sm'>
-                        Back to shop
+                       {location.state.productCode}
                     </a>
                     <h1 className='text-4xl'>
-                        Blue Jean
+                        {location.state.name}
                     </h1>
+                    <p className='text-red-300'>
+                        {location.state.price}
+                    </p>
+                    <p className='text-[10px]'>
+                    Sit amet consectetur, adipisicing elit. Distinctio 
+                    aperiam debitis ipsa veniam eos quas excepturi quae?
+                     Recusandae distinctio nihil quia quis, 
+                    eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae! Lorem ipsum dolo
+                    </p>
+                    <ol className="list-disc ml-4">
+                         <li className='text-[9px]'>slim fit</li>
+                         <li className='text-[9px]' >slim fit</li>
+                         <li className='text-[9px]'>slim fit</li>
+
+                    </ol>
                 </div>
         </div>
         {/*    You might also like     */}
