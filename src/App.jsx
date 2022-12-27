@@ -3,6 +3,7 @@ import './App.css'
 
 import Home from './views/Home/Home'
 import Product from './views/productdetails/Product'
+import Cart from "./views/cart/cart"
 function App() {
   return (
     <Routes>
@@ -12,6 +13,9 @@ function App() {
       />
       <Route
         path="/productdetail" element={<Product />}
+      />
+      <Route
+        path="/cart" element={<Cart />}
       />
     </Routes>
   )

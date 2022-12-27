@@ -1,8 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import {useLocation} from "react-router-dom"
+import { addtoCart } from '../../store/slices/cartSlice';
+import Cart from '../cart/cart';
 export const Product:React.FC=()=> {
-    const location=useLocation()
-    
+    const location=useLocation();
+    const dispatch=useDispatch();
+    const handleAddProduct=(product:object)=>{
+        console.log("added")
+            dispatch(addtoCart(product))
+        }
   return (
     <div>
            {/*   Details of the product section   */}
@@ -11,9 +18,10 @@ export const Product:React.FC=()=> {
                 Product Details
             </h1>        
         </div>
+        <Cart />
         {/* This will have viewable and zoomed pictures  */}
-        <div className='grid grid-cols-3'>
-         <div>
+        <div className='grid grid-cols-4 grid-flow-col justify-items-center mt-4 mb-4'>
+         <div className='row-span-1'>
             {location.state.sideImages.map((i)=>{
                 return(
               <div>
@@ -29,11 +37,12 @@ export const Product:React.FC=()=> {
         {/* Mid div */}
                 <div>
                     <img 
+                    className='h-80'
                     src={location.state.img}
                     />
                 </div>
                 {/* Third div */}
-                <div>
+                <div className='mx-3'>
                     <a className='text-blue text-sm'>
                        {location.state.productCode}
                     </a>
@@ -55,6 +64,9 @@ export const Product:React.FC=()=> {
                          <li className='text-[9px]'>slim fit</li>
 
                     </ol>
+                    <button onClick={()=>handleAddProduct(location.state)}>
+                        add to cart
+                    </button>
                 </div>
         </div>
         {/*    You might also like     */}
