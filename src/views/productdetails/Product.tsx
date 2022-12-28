@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import {useLocation} from "react-router-dom"
 import { addtoCart } from '../../store/slices/cartSlice';
+import { Navbar } from '../../components/Navbar/Navbar';
 import Cart from '../cart/cart';
 export const Product:React.FC=()=> {
     const location=useLocation();
@@ -12,6 +13,7 @@ export const Product:React.FC=()=> {
         }
   return (
     <div>
+        <Navbar />
            {/*   Details of the product section   */}
         <div  className="bg-[url('https://embryo-react.theironnetwork.org/static/media/page-title-bar.3ed966eb.jpg')]   grid place-items-center h-96">
             <h1 className='text-white text-4xl'>
