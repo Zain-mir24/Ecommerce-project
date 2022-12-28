@@ -34,7 +34,7 @@ export const Product:React.FC=()=> {
             })}
           
                </div>
-        {/* Mid div */}
+           {/* Mid div */}
                 <div>
                     <img 
                     className='h-80'

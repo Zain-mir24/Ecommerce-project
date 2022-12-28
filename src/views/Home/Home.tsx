@@ -1,16 +1,9 @@
 import React from 'react'
 import { Navbar } from '../../components/Navbar/Navbar'
-import { useNavigate } from "react-router-dom";
 import { data } from '../../data';
+import { Products } from '../../components/Product/Products';
 export const Home:React.FC=()=> {
-  const navigate = useNavigate()
-  const handleclick=(i)=>{
-    console.log(i,"data")
-    navigate("/productdetail",{
-      state:i
-    })
-  }
-  return (
+   return (
     <div>
       <Navbar />   
       <div className=' flex
@@ -156,27 +149,18 @@ export const Home:React.FC=()=> {
             <div className='grid grid-cols-4 gap-5'>
              {data.map((i:any)=>{
               return(
-                <div className='bg-slate-100 hover:shadow-lg'>
-                  <img 
-                  className='h-50 w-full p-4'
-                  src={i.img}
-                  />
-                  <div className='p-2'>
-                      <p className='text-[12px] font-bold'>
-                    {i.name}
-                  </p>
-                <p className='text-red-600 text-[8px]'>
-                  {i.price}
-                  </p>
-                  <button
-                  onClick={()=>handleclick(i)}
-                  className='rounded-2 text-[10px] text-black bg-slate-300 border-none hover:bg-orange-500 hover:text-white w-20'>
-                  Add to cart
-                </button>
-                </div>
-                </div>
+               <Products     
+                name={i.name}
+                price={i.price}      
+                img={i.img}
+                productCode={i.productCode}
+                availability={i.availability}
+                sideImages={i.sideImages}
+                quantity={i.quantity}
+                />
                       )
           })}
+
        </div>
        </div>
 
