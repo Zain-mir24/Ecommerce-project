@@ -41,9 +41,17 @@ const cartSlice = createSlice({
 
             }
         },
+        removeFromCart(state, action) {
+            const productIndex = state.cartItems.findIndex(
+                (item) => item.productCode === action.payload.productCode
+            )
+
+            state.cartItems.splice(productIndex, 1)
+
+        }
     }
 })
 export const cartItems = (state: RootState) => state.cart.cartItems
 export const Totalquantity = (state: RootState) => state.cart.totalQuantity
-export const { addtoCart } = cartSlice.actions
+export const { addtoCart, removeFromCart } = cartSlice.actions
 export default cartSlice.reducer;

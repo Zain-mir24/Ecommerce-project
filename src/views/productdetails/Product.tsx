@@ -8,8 +8,7 @@ export const Product:React.FC=()=> {
     const location=useLocation();
     const dispatch=useDispatch();
     const handleAddProduct=(product:object)=>{
-        console.log("added")
-            dispatch(addtoCart(product))
+         dispatch(addtoCart(product))
         }
   return (
     <div>
@@ -20,8 +19,7 @@ export const Product:React.FC=()=> {
                 Product Details
             </h1>        
         </div>
-        <Cart />
-        {/* This will have viewable and zoomed pictures  */}
+                {/* This will have viewable and zoomed pictures  */}
         <div className='grid grid-cols-4 grid-flow-col justify-items-center mt-4 mb-4'>
          <div className='row-span-1'>
             {location.state.sideImages.map((i)=>{

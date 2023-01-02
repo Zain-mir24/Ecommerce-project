@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom"
 export const Navbar:React.FC=()=> {
     return (
         <div className='w-screen h-[80px] bg-indigo-700
@@ -17,7 +18,11 @@ export const Navbar:React.FC=()=> {
            <div>
             <ul aria-labelledby="nav" className='flex flex-row justify-center z-10 bg-gray-200 text-black' >
              <li className=' hover:text-orange-600 hover:underline '>
+             <Link
+                 to={"/"}
+                 >
                 home
+                </Link>
                 </li>
                  <li className=' hover:text-orange-600 hover:underline'>
                     shop
@@ -28,8 +33,15 @@ export const Navbar:React.FC=()=> {
                 <li className=' hover:text-orange-600 hover:underline '>
                     categories
                 </li>
-                 <li className=' hover:text-orange-600 hover:underline'>
+                <li className=' hover:text-orange-600 hover:underline'>
                     Pages
+                </li>
+                 <li className=' hover:text-orange-600 hover:underline'>
+                 <Link
+                 to={"/Cart"}
+                 >
+                 Cart
+                 </Link>   
                 </li>
                 <li className=' hover:text-orange-600 hover:underline'>
                     Contact us
