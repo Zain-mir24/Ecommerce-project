@@ -34,7 +34,7 @@ export const Products:React.FC<productProp>=(props)=> {
        { price}
         </p>
       <Button onClick={()=>handleclick(props)}>
-      add to cart
+      View details
       </Button>
    </div>
    </Container> 

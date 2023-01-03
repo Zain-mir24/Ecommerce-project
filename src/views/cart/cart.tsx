@@ -1,5 +1,5 @@
 import React from 'react'
-import { cartItems, removeFromCart, Totalquantity } from '../../store/slices/cartSlice'
+import { cartItems, removeFromCart,TotalAmount} from '../../store/slices/cartSlice'
 import { useSelector,useDispatch } from 'react-redux'
 import { Navbar } from '../../components'
 import tw from "tailwind-styled-components"
@@ -8,10 +8,11 @@ function Cart() {
   const cart=useSelector(cartItems)
   const dispatch=useDispatch()
   console.log(cart)
-  const amount=useSelector(Totalquantity)
+  const amount=useSelector(TotalAmount)
+  console.log(amount,"amount")
+
   const deleteProduct=(product)=>{
-    console.log("delete product successful")
-dispatch(removeFromCart(product))
+        dispatch(removeFromCart(product))
   }
   return (
     <div>
@@ -22,16 +23,14 @@ dispatch(removeFromCart(product))
             </h1>   
           
         </div>
-        {/* Rendering Cart divs here should be able to add cart data. 
-       
-        */}
+        {/* Rendering Cart divs here should be able to add cart data. */}
        
          { cart.map((item)=>{
             return(
               <div className='m-4  border-2 flex justify-evenly'>
              <Container>
               <img 
-                 src={item.img}
+                 src={`${item.img}`}
              />
               </Container> 
               <div className='my-24 text-xl font-medium'>
@@ -53,10 +52,23 @@ dispatch(removeFromCart(product))
             {item.productCode}
           </div>
           <div className='my-24 text-sm font-medium'>
-            <p>
+            <p className='px-7'>
               quantity
             </p>
+            <div className='flex flex-row justify-evenly'>
+              <button className='w-8'>
+                -
+              </button>
+              <p className='px-4'>
               {item.quantity}
+              </p>
+            
+            <button  className='w-8'>
+              +
+            </button>
+
+            </div>
+              
           </div> 
          <div className='my-24 text-sm font-medium'>
            <button 
@@ -69,19 +81,23 @@ dispatch(removeFromCart(product))
             )
           })}
          
+      <div className='flex flex-row justify-end w-3/4'>
+        <h3>
+          SubTotal:Cart{amount}
+        </h3>
+      </div>
       
-      Cart{amount}
       </div>
   )
 }
 
 export default Cart
-const Container=tw.div`
-bg-slate-100
-hover:shadow-lg
-img{
-    h-30
-    w-1/6
-    p-7
-}
-`
+      const Container=tw.div`
+      bg-slate-100
+      hover:shadow-lg
+      img{
+          h-30
+          w-1/6
+          p-7
+      }
+      `
