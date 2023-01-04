@@ -1,5 +1,5 @@
 import React from 'react'
-import { cartItems, removeFromCart,TotalAmount} from '../../store/slices/cartSlice'
+import { cartItems, removeFromCart,TotalAmount,increaseQuantity,decreaseQuantity,Totalquantity} from '../../store/slices/cartSlice'
 import { useSelector,useDispatch } from 'react-redux'
 import { Navbar } from '../../components'
 import tw from "tailwind-styled-components"
@@ -7,9 +7,9 @@ import tw from "tailwind-styled-components"
 function Cart() {
   const cart=useSelector(cartItems)
   const dispatch=useDispatch()
-  console.log(cart)
+
   const amount=useSelector(TotalAmount)
-  console.log(amount,"amount")
+ const quant =useSelector(Totalquantity)
 
   const deleteProduct=(product)=>{
         dispatch(removeFromCart(product))
@@ -56,14 +56,14 @@ function Cart() {
               quantity
             </p>
             <div className='flex flex-row justify-evenly'>
-              <button className='w-8'>
+              <button className='w-8' onClick={()=>dispatch(decreaseQuantity(item))}>
                 -
               </button>
               <p className='px-4'>
               {item.quantity}
               </p>
             
-            <button  className='w-8'>
+            <button  className='w-8' onClick={()=>dispatch(increaseQuantity(item))}>
               +
             </button>
 
@@ -84,6 +84,9 @@ function Cart() {
       <div className='flex flex-row justify-end w-3/4'>
         <h3>
           SubTotal:Cart{amount}
+        </h3>
+        <h3>
+          Total quantity {quant} 
         </h3>
       </div>
       

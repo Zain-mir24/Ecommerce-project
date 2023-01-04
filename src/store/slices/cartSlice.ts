@@ -46,18 +46,32 @@ const cartSlice = createSlice({
         // Removing items from cart
         removeFromCart(state, action) {
             const productIndex = state.cartItems.findIndex(
-                (item) => item.productCode === action.payload.productCode
-            )
+                (item) => item.productCode === action.payload.productCode)
             const amountDeduct = action.payload.quantity * action.payload.price;
-            console.log(amountDeduct, "Deducted")
             state.totalQuantity -= action.payload.quantity;
             state.totalAmount -= amountDeduct;
             state.cartItems.splice(productIndex, 1);
+        },
+        // Increase quantity of an item in cart
+        increaseQuantity(state, action) {
+            let item: any = state.cartItems.find(item => item.productCode === action.payload.productCode)
+            item.quantity += 1;
+            state.totalQuantity += 1;
+            state.totalAmount += action.payload.price;
+        },
+        // Decrease quantity of an item in cart
+        decreaseQuantity(state, action) {
+            let item: any = state.cartItems.find(item => item.productCode === action.payload.productCode)
+            item.quantity -= 1;
+            state.totalQuantity -= 1;
+            state.totalAmount -= action.payload.price;
+
         }
+
     }
 })
 export const cartItems = (state: RootState) => state.cart.cartItems
 export const Totalquantity = (state: RootState) => state.cart.totalQuantity
 export const TotalAmount = (state: RootState) => state.cart.totalAmount
-export const { addtoCart, removeFromCart } = cartSlice.actions
+export const { addtoCart, removeFromCart, increaseQuantity, decreaseQuantity } = cartSlice.actions
 export default cartSlice.reducer;
