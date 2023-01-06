@@ -3,11 +3,12 @@ import { cartItems, removeFromCart,TotalAmount,increaseQuantity,decreaseQuantity
 import { useSelector,useDispatch } from 'react-redux'
 import { Navbar } from '../../components'
 import tw from "tailwind-styled-components"
+import { useNavigate } from 'react-router-dom'
 
 function Cart() {
+  const navigate = useNavigate()
   const cart=useSelector(cartItems)
   const dispatch=useDispatch()
-
   const amount=useSelector(TotalAmount)
  const quant =useSelector(Totalquantity)
 
@@ -15,7 +16,7 @@ function Cart() {
         dispatch(removeFromCart(product))
   }
   return (
-    <div>
+    <div className='mb-6'>
       <Navbar />
       <div  className="bg-[url('https://embryo-react.theironnetwork.org/static/media/page-title-bar.3ed966eb.jpg')]   grid place-items-center h-96">
             <h1 className='text-white text-4xl '>
@@ -80,17 +81,24 @@ function Cart() {
           </div>
             )
           })}
-         
-      <div className='flex flex-row justify-end w-3/4'>
-        <h3>
-          SubTotal:Cart{amount}
-        </h3>
-        <h3>
-          Total quantity {quant} 
-        </h3>
+       <div className="flex flex-row-reverse w-5/6">  
+          <div className='flex flex-col justify-end '>
+            <h3>
+              SubTotal:Cart{amount}
+            </h3>
+            <h3>
+              Total quantity {quant} 
+            </h3>
+          </div>
       </div>
-      
+      <div className='flex flex-row-reverse w-5/6'>
+      <button
+      onClick={()=>navigate("/Payment")}
+      className='w-26 pr-3 pl-3'>
+        Proceed to checkout
+      </button>   
       </div>
+  </div>
   )
 }
 
